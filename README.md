@@ -3,8 +3,14 @@
 Although this program has actually added additional programming to prevent crashing, it should be really easy to use. Downloading this will allow you to connect your program to this code and then tweet it at specified regular intervals. Additional features below (to be added), will allow you to extend your bot and do things like retweet posts from random/certain people, like posts from random/certain people and lots more!
 
 
-## Going Further:
-### Techniquely this bot can be simplified even more, if you really want, although it isn't recomended:
+## Contents
+#### Setting up your Twitter bot
+#### Going Further
+#### Extensions for your Twitter bot
+
+
+## Going Further
+#### Techniquely this bot can be simplified even more, if you really want, although it isn't recomended:
 ```
 import twitter
 
@@ -20,17 +26,21 @@ t = twitter.Twitter(auth=auth)
 And although this essentially is all you need, all that program will do is connect you to your twitter [developers page](https://developer.twitter.com) using your keys
 
 
-### You could make it tweet something:
+## Extensions for your Twitter Bot
+Either using the BasicTwitterBot program or the stripped program above, be sure to add these extensions
 ```
 t.statuses.update(status=message)
 ```
-Where 'message' is what you want it to tweet
+Where 'message' is what you want it to tweet (this is the default feature that BasicTwitterBot already comes with)
 
-### You could make it re-tweet something:
+#### You could make it re-tweet something:
+(to be added)
 
-### You could make it reply to a comment:
+#### You could make it reply to a comment:
+(to be added)
 
-### You could make it message someone:
+#### You could make it message someone:
+(to be added)
 
-### You could make it like something:
-
+#### You could make it like something:
+(to be added)
