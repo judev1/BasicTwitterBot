@@ -1,90 +1,95 @@
- # TwitterBot - Jude
+ # TwitterBot - Judev1
 
  # Setup
 import time
-from storygenerator import storygen
-valid1 = 0
-valid2 = 0
-minute = 60
-hour = 60*60
-day = hour*24
-month = day*30
-year = day*365
+import sys
 retry = 0
+validate = 0
 
 
-print(u"Welcome to Jude's Twitter Bot")
+print(u"Welcome to my Twitter Bot!")
+print(u"Running...")
 
 
- # Inputs & clarifications of elligibility
-while valid1 == 0:
-    fre = str(input(u"How frequent would you like me to post? (ye/mo/da/ho/mi) "))
-    if fre == "ye":
-        fre = year
-        valid1 = 1
-    elif fre == "mo":
-        fre = month
-        valid1 = 1
-    elif fre == "da":
-        fre = day
-        valid1 = 1
-    elif fre == "ho":
-        fre = hour
-        valid1 = 1
-    elif fre == "mi":
-        fre = minute
-        valid1 = 1
-    else:
-        input(u"You response wasn't one of the options, try again ")
-while valid2 == 0:
-    tot = str(input(u"And how many times would you like me to post? "))
-    try:
-        tot = int(tot)
-        valid2 = 1
-        if tot < 0:
-            valid2 = 0
-            input(u"Your input wasn't a positive integer, try again ")
-    except:
-        input(u"Your input wasn't a positive integer, try again ")
-
-
-print(u"\nRunning...")
+ # Message
+ # Posting the same message directly after each other will not work
+ # Default "Hello World"
+message = "Hello World"
 
 
  # Twitter keys
-cons_key = "DuUoGgv6cRaNn8ygco5dq28dg"
-cons_secret = "kK3SQfydqq2DGAWouPfFyrowqTQJMpCdebv4ZxeJ9YShwtd6k1"
-access_token = "1217393920684056576-cjlcMrakasMxoAxdZRez1Q1eLC7OMa"
-access_token_secret = "6oVQKg7OeVanIVnkAlYiyY0OR4WFnaAa6zcizYT15CBlw"
+cons_key = ""
+cons_secret = ""
+access_token = ""
+access_token_secret = ""
+
+
+ # Runs - how many times do you want the program to repeat
+ # Default 1 run
+runs = 1
+
+
+ # Frequency - how often do you want this program to run
+ # minute = 60 seconds
+ # hour = 3600 seconds
+ # day = 86400 seconds
+ # month = 2592000 seconds
+ # Any larger than a month and the program will not work
+ # Default 21600 seconds
+frequency = 21600
 
 
  # Install Twitter
 try:
     import twitter
-    td = True
+    dwnld = True
     print(u"Successfully installed Twitter")
 except:
-    td = False
+    dwnld = False
     print(u"Failed to install Twitter")
 
-while retry < 3 or tot == 0:
-    if td == True:
-         # Logging in to Twitter
+
+ # Setups the Twitter authenification
+auth = twitter.OAuth( access_token, access_token_secret, cons_key, cons_secret)
+t = twitter.Twitter(auth=auth)
+
+
+ # Checks that the frequency is a positive integer
+try:
+    frequency = int(frequency)
+    if frequency < 0:
+        print(u"The frequency wasn't a positive integer")
+        print("Killed program")
+        sys.exit()
+except:
+    print(u"Your frequency wasn't a positive integer")
+    print("Killed program")
+    sys.exit()
+
+
+totalruns = runs
+totaltime = (frequency*runs) - frequency
+if dwnld == True:
+    while retry > 3 or runs > 0:
+        success = False
+        # Tweeting
         try:
-            auth = twitter.OAuth( access_token, access_token_secret, cons_key, cons_secret)
-            t = twitter.Twitter(auth=auth)
-            print(u"Successfully logged into Twitter")
-            li = True
+            t.statuses.update(status=message)
+             # Add extensions here
+            success = True
         except:
-            print("Failed to log into Twitter")
-            li = False
-            retry = retry + 1
-        if li == True:
-             # Posting message
-            plot = "whore"
-            t.statuses.update(status=plot)
-            print(u"It worked! Tweeted:", plot)
-            if tot > 0:
-                print(u"Sleeping for {} seconds".format(fre))
-                time.sleep(fre)
-                tot = tot - 1
+            print(u"Unable to tweet")
+            if retry < 3:
+                retry = retry + 1
+                print(u"Attempting to retry")
+                time.sleep(2)
+            else:
+                print("Killed program")
+                sys.exit()
+        if success == True:
+            print(u"Successfully tweeted")
+            print(u"Tweeted:", message)
+            runs = runs - 1
+            print(u"Next tweet in {} seconds".format(frequency))
+            time.sleep(frequency)
+print("Program Finished! Posted {} times, elapsed time {} seconds".format(totalruns, totaltime))
