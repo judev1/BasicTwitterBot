@@ -18,6 +18,7 @@ Although this program has actually added additional programming to prevent crash
 ## Setting up your Twitter bot
 #### Step 1
 Create a [Twitter Account](https://twitter.com/i/flow/signup) unless you already have one you want to use
+
 IMG
 
 #### Step 2
@@ -25,26 +26,35 @@ Login to the [Twitter Developers Account](https://developer.twitter.com/) page u
 
 #### Step 3
 Apply for a [Twitter Developers Account](https://developer.twitter.com/)
+
 IMG
 
 #### Step 4
 Once you have filled out the questions and gained your developers account, create an application
+
 IMG
+
 Now you've created it, keep in mind the keys
+
 IMG
 
 #### Step 5
 Now download BasicTwitterBot if you haven't already
+
 IMG
+
 Fill in the keys to connect your Twitter account with your enviroment, make sure to fill in 'runs' and 'frequency' as well
+
 IMG
 
 #### Step 6
 Personalise your message, Twitter will not allow the same message to be tweeted within a certain time period, so it's best to link it to a program that will post a spesified random message, for more infomation go to [Linking Your Program](https://github.com/judev1/BasicTwitterBot/blob/master/README.md#linking-your-program)
+
 IMG
 
-#### Step
+#### Step 7
 Now you should be ready to go! Test to make sure everything is running smoothly and if you have and questions, feel free to ask
+
 IMG
 
 
@@ -92,7 +102,7 @@ Where 'message' is what you want it to tweet (this is the default feature that B
 
 
 ## Linking your Program
-You have a program which has an output which you want to tweet, then follow these steps to link it to your BasicTwitterBot program
+If ou have a program which has an output which you want to tweet, then follow these steps to link it to your BasicTwitterBot program
 
 #### Step 1
 Make sure the program which you want to use is stored in the same folder as BasicTwitterBot, for this example the name of my program will be called NumOfDay.py, this is the raw code for it
