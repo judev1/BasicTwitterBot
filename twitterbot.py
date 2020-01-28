@@ -100,7 +100,7 @@ if dwnld == True:
             print(u"Tweeted:", message)
             runs = runs - 1
 												
-            if runs <= 0:
+            if runs >= 0:
 		print(u"Next tweet in {} seconds".format(frequency))
                 time.sleep(frequency)
 
