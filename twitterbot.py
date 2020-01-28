@@ -71,8 +71,8 @@ totaltime = (frequency * runs) - frequency
 if dwnld == True:
     while retry > 3 or runs > 0:
         success = False
-				
-				     # Tweeting
+	
+	 # Tweeting
         try:
             plot = storygen.plot()
             message = plot
@@ -97,7 +97,7 @@ if dwnld == True:
             runs = runs - 1
 												
             if runs <= 0:
-												    print(u"Next tweet in {} seconds".format(frequency))
+		print(u"Next tweet in {} seconds".format(frequency))
                 time.sleep(frequency)
 
 												
