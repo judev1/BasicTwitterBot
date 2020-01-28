@@ -53,6 +53,7 @@ try:
 
     dwnld = True
     print(u"Successfully installed Twitter")
+
 except:
     dwnld = False
     print(u"Failed to install Twitter")
@@ -74,10 +75,13 @@ if dwnld == True:
 	
 	 # Tweeting
         try:
-            plot = storygen.plot()
-            message = plot
-            t.statuses.update(status=message)
-            success = True
+		 # Message
+		 # Posting the same message directly after each other will not work
+		 # Default "Hello World"
+		message = "Hello World"
+		 # Add extensions here
+            	t.statuses.update(status=message)
+            	success = True
 											
         except:
             print(u"Unable to tweet")
